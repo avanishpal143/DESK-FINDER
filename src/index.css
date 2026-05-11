@@ -1,0 +1,54 @@
+/* stylelint-disable */
+@import url('https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+/* Tailwind directives — @tailwind warnings in VS Code are safe to ignore.
+   Install "Tailwind CSS IntelliSense" extension to remove them. */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  font-family: 'Onest', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #F7F5EF;
+  letter-spacing: -0.01em;
+}
+
+code { font-family: 'JetBrains Mono', monospace; }
+
+@layer base {
+  :root {
+    --background: 44 27% 95%;
+    --foreground: 0 0% 4%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 4%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 4%;
+    --primary: 0 0% 6%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 44 22% 92%;
+    --secondary-foreground: 0 0% 9%;
+    --muted: 44 22% 92%;
+    --muted-foreground: 0 0% 38%;
+    --accent: 14 100% 58%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 30 12% 86%;
+    --input: 30 12% 86%;
+    --ring: 0 0% 6%;
+    --radius: 0.75rem;
+  }
+}
+
+@layer base {
+  * {
+    border-color: hsl(var(--border));
+  }
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+  }
+}

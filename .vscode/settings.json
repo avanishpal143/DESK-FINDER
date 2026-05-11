@@ -1,0 +1,20 @@
+{
+  "css.validate": false,
+  "scss.validate": false,
+  "less.validate": false,
+  "editor.quickSuggestions": {
+    "strings": true
+  },
+  "tailwindCSS.includeLanguages": {
+    "javascript": "javascript",
+    "javascriptreact": "javascript"
+  },
+  "cSpell.words": [
+    "Onest",
+    "tailwind",
+    "deskpass",
+    "coworking",
+    "antialiased",
+    "grayscale"
+  ]
+}

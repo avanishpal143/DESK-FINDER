@@ -1,0 +1,107 @@
+.App {
+  background: #F7F5EF;
+  color: #0B0B0B;
+  min-height: 100vh;
+  font-family: 'Onest', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  letter-spacing: -0.01em;
+}
+
+.font-display {
+  font-family: 'Onest', 'Inter', sans-serif;
+  letter-spacing: -0.04em;
+  font-weight: 700;
+}
+
+/* Cross / plus pattern background */
+.bg-cross {
+  background-color: #F7F5EF;
+  background-image:
+    linear-gradient(to right, rgba(11,11,11,0.07) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(11,11,11,0.07) 1px, transparent 1px);
+  background-size: 56px 56px;
+  background-position: -1px -1px;
+  position: relative;
+}
+
+.bg-cross::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: radial-gradient(circle, rgba(11,11,11,0.18) 1.2px, transparent 1.3px);
+  background-size: 56px 56px;
+  background-position: 28px 28px;
+  pointer-events: none;
+}
+
+.divider-line {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(11,11,11,0.15) 30%, rgba(11,11,11,0.15) 70%, transparent);
+}
+
+@keyframes ticker {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.ticker-track { animation: ticker 40s linear infinite; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-up { animation: fadeUp 0.7s ease forwards; }
+
+.dot-grid {
+  background-image: radial-gradient(rgba(11,11,11,0.08) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+.lift { transition: transform 0.4s cubic-bezier(.2,.7,.2,1), box-shadow 0.4s ease; }
+.lift:hover { transform: translateY(-4px); box-shadow: 0 20px 50px -20px rgba(11,11,11,0.18); }
+
+:root {
+  --ink: #0B0B0B;
+  --paper: #F7F5EF;
+  --paper-2: #EDEAE0;
+  --coral: #FF5A2C;
+  --coral-soft: #FFE3D6;
+  --mustard: #C9A23B;
+  --green: #16A34A;
+  --line: rgba(11,11,11,0.12);
+}
+
+html { scroll-behavior: smooth; }
+
+.eyebrow {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-size: 11px;
+  color: rgba(11,11,11,0.55);
+}
+
+.marquee-mask {
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+
+.decor-ring { box-shadow: inset 0 0 0 1px rgba(11,11,11,0.1); }
+
+::selection { background: #0B0B0B; color: white; }
+
+/* Hand drawn mustard squiggle under "Every desk." */
+.squiggle {
+  position: relative;
+  display: inline-block;
+}
+
+.squiggle::after {
+  content: '';
+  position: absolute;
+  left: -4%; right: -4%;
+  bottom: -0.12em;
+  height: 0.22em;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 24' preserveAspectRatio='none'><path d='M2 14 C 40 4, 80 22, 120 12 S 200 4, 240 14 S 296 8, 298 12' stroke='%23C9A23B' stroke-width='4' stroke-linecap='round' fill='none'/></svg>");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
