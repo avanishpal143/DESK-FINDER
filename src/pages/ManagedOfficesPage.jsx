@@ -22,7 +22,7 @@ export default function ManagedOfficesPage() {
         <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <div className="eyebrow mb-3">— Managed Offices</div>
+              <div className="eyebrow mb-3">Managed Offices</div>
               <h1 className="font-bold text-4xl lg:text-6xl leading-[0.95]" style={{ letterSpacing: '-0.04em' }}>
                 Your office,<br />fully managed
               </h1>
@@ -62,7 +62,7 @@ export default function ManagedOfficesPage() {
       <section id="inventory" className="py-14 bg-[#F7F5EF]">
         <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
           <div className="mb-8">
-            <div className="eyebrow mb-2">— Live Inventory</div>
+            <div className="eyebrow mb-2">Live Inventory</div>
             <h2 className="font-bold text-3xl lg:text-4xl" style={{ letterSpacing: '-0.04em' }}>Browse by provider</h2>
             <p className="mt-2 text-[13px] text-[#0B0B0B]/55">Real-time seat availability across all partner spaces.</p>
           </div>
@@ -142,7 +142,7 @@ export default function ManagedOfficesPage() {
       <section className="py-14 bg-[#EDEAE0]">
         <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
           <div className="mb-8">
-            <div className="eyebrow mb-2">— Why Choose Us</div>
+            <div className="eyebrow mb-2">Why Choose Us</div>
             <h2 className="font-bold text-3xl lg:text-4xl" style={{ letterSpacing: '-0.04em' }}>Everything included</h2>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">

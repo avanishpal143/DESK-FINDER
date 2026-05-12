@@ -7,7 +7,7 @@ export default function Testimonials() {
       <div className="absolute inset-0 dot-grid opacity-[0.06]" />
       <div className="max-w-[1400px] mx-auto px-6 lg:px-10 relative">
         <div className="mb-10">
-          <div className="eyebrow text-white/40 mb-3">— What People Say</div>
+          <div className="eyebrow text-white/40 mb-3">What People Say</div>
           <h2 className="font-bold text-4xl lg:text-5xl leading-[0.95]" style={{ letterSpacing: '-0.04em' }}>
             Loved by professionals
           </h2>

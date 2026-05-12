@@ -4,33 +4,30 @@ import { ArrowUpRight } from 'lucide-react';
 
 const LINKS = [
   {
-    title: 'Product',
+    title: 'Spaces',
     items: [
-      { label: 'Day Pass', to: '/#passes' },
-      { label: 'Flex Pass', to: '/#passes' },
-      { label: 'Unlimited', to: '/#passes' },
+      { label: 'Desks', to: '/desks' },
+      { label: 'Cabins', to: '/desks' },
       { label: 'Meeting Rooms', to: '/meeting-rooms' },
       { label: 'Virtual Office', to: '/meeting-rooms' },
+      { label: 'Managed Offices', to: '/managed-offices' },
     ],
   },
   {
     title: 'Company',
     items: [
-      { label: 'About', to: '/contact' },
-      { label: 'Careers', to: '/contact' },
-      { label: 'Press', to: '/contact' },
-      { label: 'Partners', to: '/contact' },
+      { label: 'About Us', to: '/about' },
+      { label: 'Our Story', to: '/about' },
       { label: 'Contact', to: '/contact' },
+      { label: 'List Your Space', to: '/contact' },
     ],
   },
   {
     title: 'Resources',
     items: [
       { label: 'Blog', to: '/contact' },
-      { label: 'Help Center', to: '/contact' },
       { label: 'City Guides', to: '/desks' },
-      { label: 'Community', to: '/#community' },
-      { label: 'API', to: '/contact' },
+      { label: 'FAQ', to: '/#faq' },
     ],
   },
 ];
@@ -52,15 +49,11 @@ export default function Footer() {
           {/* Brand col */}
           <div className="lg:col-span-4">
             <Link to="/" className="inline-block">
-              <img
-                src="/logo.png"
-                alt="The Desk Finder"
-                className="h-7 w-auto object-contain"
-              />
+              <img src="/logo.png" alt="The Desk Finder" className="h-7 w-auto object-contain" />
             </Link>
 
             <p className="mt-4 text-[13px] text-[#0B0B0B]/55 leading-relaxed max-w-[220px]">
-              India's first coworking pass network. One pass, every desk, done.
+              Where work finds space. India's first coworking pass network.
             </p>
 
             <a href="mailto:hello@thedeskfinder.in" className="mt-4 inline-flex items-center gap-1.5 group">
@@ -112,7 +105,6 @@ export default function Footer() {
           <div className="flex items-center gap-4 text-[11px] text-[#0B0B0B]/40">
             <Link to="/contact" className="hover:text-[#0B0B0B] transition-colors">Privacy</Link>
             <Link to="/contact" className="hover:text-[#0B0B0B] transition-colors">Terms</Link>
-            <Link to="/contact" className="hover:text-[#0B0B0B] transition-colors">Cookies</Link>
           </div>
         </div>
 

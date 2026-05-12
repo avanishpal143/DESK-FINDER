@@ -6,6 +6,7 @@ import DesksPage from "./pages/DesksPage";
 import ManagedOfficesPage from "./pages/ManagedOfficesPage";
 import MeetingRoomsPage from "./pages/MeetingRoomsPage";
 import ContactPage from "./pages/ContactPage";
+import AboutPage from "./pages/AboutPage";
 import { Toaster } from "sonner";
 
 // Scroll to top on route change
@@ -30,6 +31,7 @@ function App() {
           <Route path="/managed-offices" element={<ManagedOfficesPage />} />
           <Route path="/meeting-rooms" element={<MeetingRoomsPage />} />
           <Route path="/contact" element={<ContactPage />} />
+          <Route path="/about" element={<AboutPage />} />
         </Routes>
       </BrowserRouter>
       <Toaster position="top-right" richColors />

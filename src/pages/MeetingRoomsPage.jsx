@@ -14,7 +14,7 @@ export default function MeetingRoomsPage() {
       <section className="bg-cross pt-32 pb-12">
         <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
           <div className="max-w-2xl">
-            <div className="eyebrow mb-3">— Meeting Rooms &amp; Virtual Offices</div>
+            <div className="eyebrow mb-3">Meeting Rooms &amp; Virtual Offices</div>
             <h1 className="font-bold text-4xl lg:text-6xl leading-[0.95]" style={{ letterSpacing: '-0.04em' }}>
               Professional spaces<br />
               <span className="squiggle">on demand</span>

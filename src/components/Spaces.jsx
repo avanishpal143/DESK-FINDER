@@ -37,7 +37,7 @@ export default function Spaces() {
         {/* Header */}
         <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 mb-7">
           <div>
-            <div className="eyebrow mb-2">— Available Now</div>
+            <div className="eyebrow mb-2">Available Now</div>
             <h2 className="font-bold text-3xl lg:text-4xl leading-[0.95]" style={{ letterSpacing: '-0.04em' }}>
               Desks &amp; spaces
             </h2>

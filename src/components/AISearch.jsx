@@ -16,7 +16,7 @@ export default function AISearch() {
   const submit = (e) => {
     e.preventDefault();
     if (!email) return toast.error('Drop your email to join');
-    toast.success("You're on the waitlist — we'll be in touch.");
+    toast.success("You're on the waitlist we'll be in touch.");
     setEmail('');
     setQ('');
   };

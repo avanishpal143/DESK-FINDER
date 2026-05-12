@@ -8,7 +8,7 @@ export default function PassTiers() {
       <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 mb-10">
           <div>
-            <div className="eyebrow mb-3">— Pass System</div>
+            <div className="eyebrow mb-3">Pass System</div>
             <h2 className="font-bold text-4xl lg:text-5xl leading-[0.95] max-w-2xl" style={{ letterSpacing: '-0.04em' }}>
               Choose your tier
             </h2>

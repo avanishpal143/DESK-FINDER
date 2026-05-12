@@ -1,19 +1,26 @@
 import React, { useState } from 'react';
 import Layout from '../components/Layout';
 import { toast } from 'sonner';
-import { MapPin, Mail, Phone, ArrowRight, Check, Building2, Users, BriefcaseBusiness, Sparkles } from 'lucide-react';
+import { MapPin, Mail, Phone, ArrowRight, Check, Monitor, Users, Building2, Globe } from 'lucide-react';
 
 const ENQUIRY_TYPES = [
-  { value: 'desk', label: 'Book a Desk', icon: Users },
-  { value: 'office', label: 'Managed Office', icon: Building2 },
-  { value: 'meeting', label: 'Meeting Room', icon: BriefcaseBusiness },
-  { value: 'list', label: 'List My Space', icon: Sparkles },
+  { value: 'desk', label: 'Desk', icon: Users },
+  { value: 'cabin', label: 'Cabin', icon: Monitor },
+  { value: 'meeting', label: 'Meeting Room', icon: Monitor },
+  { value: 'virtual', label: 'Virtual Office', icon: Globe },
+  { value: 'managed', label: 'Managed Office', icon: Building2 },
 ];
 
 const OFFICES = [
   { city: 'Delhi', address: 'Connaught Place, New Delhi – 110001', phone: '+91 98100 00001' },
   { city: 'Mumbai', address: 'BKC, Bandra East, Mumbai – 400051', phone: '+91 98200 00002' },
   { city: 'Bangalore', address: 'Indiranagar, Bangalore – 560038', phone: '+91 98300 00003' },
+];
+
+const SOCIALS = [
+  { label: 'X (Twitter)', handle: '@thedeskfinder', href: 'https://twitter.com' },
+  { label: 'LinkedIn', handle: 'The Desk Finder', href: 'https://linkedin.com' },
+  { label: 'Instagram', handle: '@thedeskfinder', href: 'https://instagram.com' },
 ];
 
 export default function ContactPage() {
@@ -30,7 +37,7 @@ export default function ContactPage() {
       return;
     }
     setSubmitted(true);
-    toast.success("Message sent! We'll get back to you within 24 hours.");
+    toast.success("Message sent! We'll get back to you within 2–4 hours.");
   };
 
   return (
@@ -39,13 +46,13 @@ export default function ContactPage() {
       <section className="bg-cross pt-32 pb-12">
         <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
           <div className="max-w-xl">
-            <div className="eyebrow mb-3">— Contact Us</div>
+            <div className="eyebrow mb-3">Contact Us</div>
             <h1 className="font-bold text-4xl lg:text-6xl leading-[0.95]" style={{ letterSpacing: '-0.04em' }}>
               Let's find your<br />
               <span className="squiggle">perfect space</span>
             </h1>
             <p className="mt-4 text-[15px] text-[#0B0B0B]/60 leading-relaxed">
-              Whether you're looking for a desk, a managed office, or want to list your space — we'll get back to you within 24 hours.
+              Whether you're looking for a desk, a managed office, or want to list your space we'll get back to you within 2–4 hours.
             </p>
           </div>
         </div>
@@ -65,7 +72,7 @@ export default function ContactPage() {
                   </div>
                   <h2 className="font-bold text-2xl mt-5 tracking-tight">Message received!</h2>
                   <p className="text-[#0B0B0B]/55 mt-2 text-[14px]">
-                    Our team will reach out to you at <strong>{form.email}</strong> within 24 hours.
+                    Our team will reach out to <strong>{form.email}</strong> within 2–4 hours.
                   </p>
                   <button
                     onClick={() => { setSubmitted(false); setForm({ name: '', email: '', phone: '', company: '', message: '' }); setType(''); }}
@@ -77,24 +84,24 @@ export default function ContactPage() {
               ) : (
                 <form onSubmit={submit} className="bg-white rounded-2xl p-7 lg:p-8 border border-[var(--line)]">
                   <h2 className="font-bold text-[22px] tracking-tight">Send us a message</h2>
-                  <p className="mt-1 text-[13px] text-[#0B0B0B]/55">All fields marked * are required.</p>
+                  <p className="mt-1 text-[13px] text-[#0B0B0B]/55">Fields marked * are required.</p>
 
                   {/* Enquiry type */}
                   <div className="mt-6">
-                    <label className="text-[13px] font-medium block mb-2">I'm interested in *</label>
-                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                    <label className="text-[13px] font-medium block mb-2">I'm looking for a *</label>
+                    <div className="flex flex-wrap gap-2">
                       {ENQUIRY_TYPES.map((t) => (
                         <button
                           key={t.value}
                           type="button"
                           onClick={() => setType(t.value)}
-                          className={`flex flex-col items-center gap-1.5 p-3 rounded-xl border text-[12px] font-medium transition-colors ${
+                          className={`flex items-center gap-1.5 px-4 h-9 rounded-full border text-[12px] font-medium transition-colors ${
                             type === t.value
                               ? 'border-[#0B0B0B] bg-[#0B0B0B] text-white'
                               : 'border-[var(--line)] text-[#0B0B0B]/65 hover:border-[#0B0B0B]/30'
                           }`}
                         >
-                          <t.icon className="w-4 h-4" />
+                          <t.icon className="w-3.5 h-3.5" />
                           {t.label}
                         </button>
                       ))}
@@ -146,7 +153,7 @@ export default function ContactPage() {
                     <label className="text-[13px] font-medium block mb-1.5">Message</label>
                     <textarea
                       value={form.message} onChange={set('message')}
-                      placeholder="Tell us about your requirements — city, team size, budget, timeline..."
+                      placeholder="Tell us about your requirements city, team size, budget, timeline..."
                       rows={4}
                       className="w-full rounded-xl border border-[var(--line)] px-4 py-3 text-[13px] outline-none focus:border-[#0B0B0B]/40 transition-colors placeholder:text-[#0B0B0B]/30 resize-none"
                     />
@@ -160,18 +167,18 @@ export default function ContactPage() {
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </button>
                   <p className="mt-3 text-[11px] text-[#0B0B0B]/40 text-center">
-                    We respond within 24 hours. No spam, ever.
+                    We respond within 2–4 hours. No spam, ever.
                   </p>
                 </form>
               )}
             </div>
 
             {/* Sidebar */}
-            <div className="lg:col-span-5 space-y-5">
+            <div className="lg:col-span-5 space-y-4">
 
               {/* Quick contact */}
               <div className="bg-[#0B0B0B] text-white rounded-2xl p-6">
-                <h3 className="font-bold text-[17px] tracking-tight">Quick contact</h3>
+                <h3 className="font-bold text-[17px] tracking-tight">Get in touch</h3>
                 <div className="mt-4 space-y-3">
                   <a href="mailto:hello@thedeskfinder.in" className="flex items-center gap-3 group">
                     <div className="w-8 h-8 rounded-lg bg-white/10 grid place-items-center shrink-0">
@@ -186,11 +193,26 @@ export default function ContactPage() {
                     <span className="text-[13px] text-white/70 group-hover:text-white transition-colors">+91 98100 00000</span>
                   </a>
                 </div>
-                <div className="mt-5 pt-5 border-t border-white/10">
-                  <div className="text-[12px] text-white/40 mb-2">Response time</div>
+
+                {/* Response time */}
+                <div className="mt-5 pt-4 border-t border-white/10">
+                  <div className="text-[11px] text-white/40 mb-2 uppercase tracking-wider">Response time</div>
                   <div className="flex items-center gap-2">
                     <div className="w-2 h-2 rounded-full bg-[#16A34A]" />
                     <span className="text-[13px] text-white/70">Usually within 2–4 hours</span>
+                  </div>
+                </div>
+
+                {/* Socials */}
+                <div className="mt-5 pt-4 border-t border-white/10">
+                  <div className="text-[11px] text-white/40 mb-3 uppercase tracking-wider">Follow us</div>
+                  <div className="space-y-2.5">
+                    {SOCIALS.map((s) => (
+                      <a key={s.label} href={s.href} target="_blank" rel="noreferrer" className="flex items-center justify-between group">
+                        <span className="text-[13px] text-white/60 group-hover:text-white transition-colors">{s.label}</span>
+                        <span className="text-[12px] text-white/40 group-hover:text-white/70 transition-colors">{s.handle}</span>
+                      </a>
+                    ))}
                   </div>
                 </div>
               </div>
@@ -214,21 +236,18 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              {/* FAQ */}
-              <div className="bg-white rounded-2xl p-6 border border-[var(--line)]">
-                <h3 className="font-bold text-[17px] tracking-tight mb-4">Common questions</h3>
-                <div className="space-y-4">
-                  {[
-                    { q: 'How quickly can I get a space?', a: 'Most bookings are confirmed instantly. For managed offices, we typically respond within 24 hours.' },
-                    { q: 'Is there a minimum commitment?', a: 'Day passes have no commitment. Monthly plans can be cancelled with 30 days notice.' },
-                    { q: 'Can I list my space for free?', a: 'Yes! Listing is completely free. We only charge a small commission on confirmed bookings.' },
-                  ].map((faq) => (
-                    <div key={faq.q} className="border-b border-[var(--line)] pb-4 last:border-0 last:pb-0">
-                      <div className="font-medium text-[13px]">{faq.q}</div>
-                      <div className="text-[12px] text-[#0B0B0B]/55 mt-1 leading-relaxed">{faq.a}</div>
-                    </div>
-                  ))}
-                </div>
+              {/* List your space CTA */}
+              <div className="bg-[#EDEAE0] rounded-2xl p-6 border border-[var(--line)]">
+                <h3 className="font-bold text-[16px] tracking-tight">Want to list your space?</h3>
+                <p className="mt-1.5 text-[13px] text-[#0B0B0B]/60 leading-relaxed">
+                  Listing is free. We only charge a small commission on confirmed bookings.
+                </p>
+                <a
+                  href="mailto:partner@thedeskfinder.in"
+                  className="mt-4 inline-flex items-center gap-2 bg-[#0B0B0B] text-white rounded-full px-5 h-9 text-[12px] font-medium hover:bg-[#1f1f1f] transition-colors"
+                >
+                  partner@thedeskfinder.in
+                </a>
               </div>
 
             </div>

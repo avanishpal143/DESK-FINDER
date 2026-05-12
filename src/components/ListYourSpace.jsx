@@ -3,7 +3,7 @@ import { ArrowRight, Sparkles, Check } from 'lucide-react';
 import { toast } from 'sonner';
 
 const BENEFITS = [
-  'Zero listing cost — free to join',
+  'Zero listing cost free to join',
   'Get leads directly, no middlemen',
   'Real-time booking dashboard',
   'Instant payouts on confirmed bookings',
@@ -39,7 +39,7 @@ export default function ListYourSpace() {
               <span className="text-[#C9A23B]">coworking space</span>
             </h2>
             <p className="mt-4 text-[14px] text-white/55 leading-relaxed max-w-md">
-              Have an underutilised office, café, or commercial space? List it on The Desk Finder and start earning from every booking — with zero upfront cost and full control over your availability.
+              Have an underutilised office, café, or commercial space? List it on The Desk Finder and start earning from every booking with zero upfront cost and full control over your availability.
             </p>
 
             <ul className="mt-6 space-y-2.5">
@@ -52,7 +52,7 @@ export default function ListYourSpace() {
             </ul>
           </div>
 
-          {/* Right — waitlist form */}
+          {/* Right waitlist form */}
           <div className="bg-white/[0.06] border border-white/10 rounded-2xl p-7 lg:p-8">
             <h3 className="font-bold text-[20px] tracking-tight">Join the partner waitlist</h3>
             <p className="mt-1.5 text-[13px] text-white/50">
@@ -82,7 +82,7 @@ export default function ListYourSpace() {
             <div className="mt-5 pt-5 border-t border-white/10 grid grid-cols-3 gap-4 text-center">
               {[
                 { value: '₹0', label: 'Listing cost' },
-                { value: '24h', label: 'Onboarding' },
+                { value: '2–4h', label: 'Onboarding' },
                 { value: '100%', label: 'Your control' },
               ].map((s) => (
                 <div key={s.label}>

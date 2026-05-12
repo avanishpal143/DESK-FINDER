@@ -89,7 +89,35 @@ html { scroll-behavior: smooth; }
 
 ::selection { background: #0B0B0B; color: white; }
 
-/* Hand drawn mustard squiggle under "Every desk." */
+/* Hero floating cards animation */
+@keyframes heroFloat {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+@keyframes heroFloat2 {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-14px); }
+}
+@keyframes heroFloat3 {
+  0%, 100% { transform: translateY(-50%); }
+  50% { transform: translateY(calc(-50% - 8px)); }
+}
+
+.hero-float {
+  animation: heroFloat 5s ease-in-out infinite;
+}
+.hero-float-delay-1 {
+  animation: heroFloat2 5s ease-in-out infinite;
+  animation-delay: 0.5s;
+}
+.hero-float-delay-2 {
+  animation: heroFloat 5s ease-in-out infinite;
+  animation-delay: 1.2s;
+}
+.hero-float-delay-3 {
+  animation: heroFloat3 6s ease-in-out infinite;
+  animation-delay: 0.8s;
+}
 .squiggle {
   position: relative;
   display: inline-block;

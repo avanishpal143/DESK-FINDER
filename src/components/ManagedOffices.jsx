@@ -10,7 +10,7 @@ export default function ManagedOffices() {
       <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 mb-10">
           <div>
-            <div className="eyebrow mb-3">— Enterprise Ready</div>
+            <div className="eyebrow mb-3">Enterprise Ready</div>
             <h2 className="font-bold text-4xl lg:text-5xl leading-[0.95]" style={{ letterSpacing: '-0.04em' }}>
               Managed offices
             </h2>

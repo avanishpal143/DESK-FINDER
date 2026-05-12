@@ -29,7 +29,7 @@ export default function DesksPage() {
       <section className="bg-cross pt-32 pb-12">
         <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
           <div className="max-w-2xl">
-            <div className="eyebrow mb-3">— Desks &amp; Coworking Spaces</div>
+            <div className="eyebrow mb-3">Desks &amp; Coworking Spaces</div>
             <h1 className="font-bold text-4xl lg:text-6xl leading-[0.95]" style={{ letterSpacing: '-0.04em' }}>
               Find your perfect<br />
               <span className="squiggle">workspace</span>

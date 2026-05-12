@@ -4,7 +4,7 @@ import { ChevronDown } from 'lucide-react';
 const FAQS = [
   {
     q: 'What is The Desk Finder?',
-    a: 'The Desk Finder is India\'s first coworking pass network. With a single membership, you get access to hot desks, dedicated seats, cabins, and meeting rooms across 100+ partner spaces in 10+ cities — no separate bookings, no multiple apps.',
+    a: 'The Desk Finder is India\'s first coworking pass network. With a single membership, you get access to hot desks, dedicated seats, cabins, and meeting rooms across 100+ partner spaces in 10+ cities no separate bookings, no multiple apps.',
   },
   {
     q: 'How does the pass work?',
@@ -16,7 +16,7 @@ const FAQS = [
   },
   {
     q: 'What\'s the difference between a Hot Desk, Dedicated Desk, and Cabin?',
-    a: 'A Hot Desk is a shared, non-reserved seat — sit anywhere available each day. A Dedicated Desk is your own fixed seat reserved just for you. A Cabin is a private enclosed office for 1–4 people with full privacy and a lock.',
+    a: 'A Hot Desk is a shared, non-reserved seat sit anywhere available each day. A Dedicated Desk is your own fixed seat reserved just for you. A Cabin is a private enclosed office for 1–4 people with full privacy and a lock.',
   },
   {
     q: 'Is there a minimum commitment?',
@@ -24,7 +24,7 @@ const FAQS = [
   },
   {
     q: 'How do I list my space on The Desk Finder?',
-    a: 'Listing is completely free. Fill out the form on our Contact page or click "List your space" in the navbar. We\'ll review your space and get back to you within 24 hours. You only pay a small commission on confirmed bookings.',
+    a: 'Listing is completely free. Fill out the form on our Contact page or click "List your space" in the navbar. We\'ll review your space and get back to you within 2–4 hours. You only pay a small commission on confirmed bookings.',
   },
   {
     q: 'Are meeting rooms included in the pass?',
@@ -32,7 +32,7 @@ const FAQS = [
   },
   {
     q: 'What cities are you available in?',
-    a: 'We currently operate in Delhi, Mumbai, Bangalore, Pune, Hyderabad, Chennai, Noida, Gurgaon, Kolkata, and Ahmedabad — with more cities coming soon.',
+    a: 'We currently operate in Delhi, Mumbai, Bangalore, Pune, Hyderabad, Chennai, Noida, Gurgaon, Kolkata, and Ahmedabad with more cities coming soon.',
   },
 ];
 
@@ -46,7 +46,7 @@ export default function FAQ() {
 
           {/* Left label */}
           <div className="lg:col-span-4">
-            <div className="eyebrow mb-3">— FAQ</div>
+            <div className="eyebrow mb-3">FAQ</div>
             <h2 className="font-bold text-3xl lg:text-4xl leading-[0.95]" style={{ letterSpacing: '-0.04em' }}>
               Frequently asked questions
             </h2>
