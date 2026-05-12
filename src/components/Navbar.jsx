@@ -36,9 +36,12 @@ export default function Navbar() {
       <div className="max-w-[1400px] mx-auto px-6 lg:px-10 h-20 flex items-center justify-between">
 
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-2.5 group shrink-0">
-          <div className="w-9 h-9 rounded-lg bg-[#0B0B0B] grid place-items-center text-white font-bold text-base">D</div>
-          <span className="font-bold text-[18px]" style={{ letterSpacing: '-0.04em' }}>The Desk Finder</span>
+        <Link to="/" className="flex items-center shrink-0">
+          <img
+            src="/logo.png"
+            alt="The Desk Finder"
+            className="h-7 w-auto object-contain"
+          />
         </Link>
 
         {/* Nav links */}
