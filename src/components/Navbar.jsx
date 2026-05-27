@@ -13,7 +13,7 @@ const SPACES_DROPDOWN = [
 const NAV = [
   { label: 'Spaces', href: null, dropdown: SPACES_DROPDOWN },
   { label: 'About', href: '/about' },
-  { label: 'Contact', href: '/contact' },
+  { label: 'Contact', href: '/contact?type=find' },
 ];
 
 export default function Navbar() {
@@ -80,7 +80,7 @@ export default function Navbar() {
                     ))}
                     <div className="border-t border-[var(--line)]">
                       <Link
-                        to="/contact"
+                        to="/contact?type=list"
                         className="block px-4 py-2.5 text-[13px] font-medium text-[#0B0B0B] hover:bg-[#F7F5EF] transition-colors"
                       >
                         List Your Space →
@@ -109,13 +109,13 @@ export default function Navbar() {
         {/* CTA */}
         <div className="hidden md:flex items-center gap-3">
           <Link
-            to="/contact"
+            to="/contact?type=list"
             className="text-[13px] text-[#0B0B0B]/60 hover:text-[#0B0B0B] transition-colors"
           >
             List your space
           </Link>
           <Link
-            to="/contact"
+            to="/contact?type=find"
             className="inline-flex items-center gap-2 bg-[#0B0B0B] text-white hover:bg-[#1f1f1f] rounded-full px-5 h-10 text-[13px] font-medium transition-colors"
           >
             Find a Space
@@ -137,16 +137,16 @@ export default function Navbar() {
                 {d.label}
               </Link>
             ))}
-            <Link to="/contact" className="py-2 text-[15px] text-[#0B0B0B] font-medium pl-3 border-b border-[var(--line)]">
+            <Link to="/contact?type=list" className="py-2 text-[15px] text-[#0B0B0B] font-medium pl-3 border-b border-[var(--line)]">
               List Your Space
             </Link>
             <Link to="/about" className={`py-2.5 text-[15px] border-b border-[var(--line)] ${isActive('/about') ? 'font-medium' : 'text-[#0B0B0B]/70'}`}>
               About
             </Link>
-            <Link to="/contact" className={`py-2.5 text-[15px] ${isActive('/contact') ? 'font-medium' : 'text-[#0B0B0B]/70'}`}>
+            <Link to="/contact?type=find" className={`py-2.5 text-[15px] ${isActive('/contact') ? 'font-medium' : 'text-[#0B0B0B]/70'}`}>
               Contact
             </Link>
-            <Link to="/contact" className="mt-3 bg-[#0B0B0B] text-white rounded-full h-11 text-[14px] font-medium flex items-center justify-center">
+            <Link to="/contact?type=find" className="mt-3 bg-[#0B0B0B] text-white rounded-full h-11 text-[14px] font-medium flex items-center justify-center">
               Find a Space
             </Link>
           </div>

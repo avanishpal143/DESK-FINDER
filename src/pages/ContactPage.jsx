@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Layout from '../components/Layout';
+import TypewriterHeading from '../components/TypewriterHeading';
 import { toast } from 'sonner';
 import { MapPin, Mail, Phone, ArrowRight, Check, Monitor, Users, Building2, Globe } from 'lucide-react';
+import { useSearchParams } from 'react-router-dom';
 
 const ENQUIRY_TYPES = [
   { value: 'desk', label: 'Desk', icon: Users },
@@ -9,6 +11,7 @@ const ENQUIRY_TYPES = [
   { value: 'meeting', label: 'Meeting Room', icon: Monitor },
   { value: 'virtual', label: 'Virtual Office', icon: Globe },
   { value: 'managed', label: 'Managed Office', icon: Building2 },
+  { value: 'list_space', label: 'List my Space', icon: Building2 },
 ];
 
 const OFFICES = [
@@ -24,9 +27,19 @@ const SOCIALS = [
 ];
 
 export default function ContactPage() {
+  const [searchParams] = useSearchParams();
   const [type, setType] = useState('');
   const [form, setForm] = useState({ name: '', email: '', phone: '', company: '', message: '' });
   const [submitted, setSubmitted] = useState(false);
+
+  useEffect(() => {
+    const mode = searchParams.get('type');
+    if (mode === 'list') {
+      setType('list_space');
+    } else if (mode === 'find') {
+      setType('desk');
+    }
+  }, [searchParams]);
 
   const set = (k) => (e) => setForm(f => ({ ...f, [k]: e.target.value }));
 
@@ -37,7 +50,7 @@ export default function ContactPage() {
       return;
     }
     setSubmitted(true);
-    toast.success("Message sent! We'll get back to you within 2–4 hours.");
+    toast.success("Message sent! We'll get back to you within 24 hours.");
   };
 
   return (
@@ -47,12 +60,13 @@ export default function ContactPage() {
         <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
           <div className="max-w-xl">
             <div className="eyebrow mb-3">Contact Us</div>
-            <h1 className="font-bold text-4xl lg:text-6xl leading-[0.95]" style={{ letterSpacing: '-0.04em' }}>
-              Let's find your<br />
-              <span className="squiggle">perfect space</span>
-            </h1>
+            <TypewriterHeading 
+              text1="Let's find your" 
+              text2="perfect space" 
+              className="font-bold text-4xl lg:text-6xl leading-[0.95] min-h-[2.1em]" 
+            />
             <p className="mt-4 text-[15px] text-[#0B0B0B]/60 leading-relaxed">
-              Whether you're looking for a desk, a managed office, or want to list your space we'll get back to you within 2–4 hours.
+              Whether you're looking for a desk, a managed office, or want to list your space we'll get back to you within 24 hours.
             </p>
           </div>
         </div>
@@ -72,7 +86,7 @@ export default function ContactPage() {
                   </div>
                   <h2 className="font-bold text-2xl mt-5 tracking-tight">Message received!</h2>
                   <p className="text-[#0B0B0B]/55 mt-2 text-[14px]">
-                    Our team will reach out to <strong>{form.email}</strong> within 2–4 hours.
+                    Our team will reach out to <strong>{form.email}</strong> within 24 hours.
                   </p>
                   <button
                     onClick={() => { setSubmitted(false); setForm({ name: '', email: '', phone: '', company: '', message: '' }); setType(''); }}
@@ -83,7 +97,7 @@ export default function ContactPage() {
                 </div>
               ) : (
                 <form onSubmit={submit} className="bg-white rounded-2xl p-7 lg:p-8 border border-[var(--line)]">
-                  <h2 className="font-bold text-[22px] tracking-tight">Send us a message</h2>
+                  <h2 className="font-bold text-[22px] tracking-tight">{type === 'list_space' ? 'List your space' : 'Send us a message'}</h2>
                   <p className="mt-1 text-[13px] text-[#0B0B0B]/55">Fields marked * are required.</p>
 
                   {/* Enquiry type */}
@@ -167,7 +181,7 @@ export default function ContactPage() {
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </button>
                   <p className="mt-3 text-[11px] text-[#0B0B0B]/40 text-center">
-                    We respond within 2–4 hours. No spam, ever.
+                    We respond within 24 hours. No spam, ever.
                   </p>
                 </form>
               )}
@@ -199,7 +213,7 @@ export default function ContactPage() {
                   <div className="text-[11px] text-white/40 mb-2 uppercase tracking-wider">Response time</div>
                   <div className="flex items-center gap-2">
                     <div className="w-2 h-2 rounded-full bg-[#16A34A]" />
-                    <span className="text-[13px] text-white/70">Usually within 2–4 hours</span>
+                    <span className="text-[13px] text-white/70">Usually within 24 hours</span>
                   </div>
                 </div>
 
@@ -240,7 +254,7 @@ export default function ContactPage() {
               <div className="bg-[#EDEAE0] rounded-2xl p-6 border border-[var(--line)]">
                 <h3 className="font-bold text-[16px] tracking-tight">Want to list your space?</h3>
                 <p className="mt-1.5 text-[13px] text-[#0B0B0B]/60 leading-relaxed">
-                  Listing is free. We only charge a small commission on confirmed bookings.
+                  Listing is free. Get in touch with our partnerships team to get started.
                 </p>
                 <a
                   href="mailto:partner@thedeskfinder.in"

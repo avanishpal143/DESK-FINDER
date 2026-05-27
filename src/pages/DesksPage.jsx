@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Layout from '../components/Layout';
+import TypewriterHeading from '../components/TypewriterHeading';
 import { spaces } from '../data/mock';
 import { Star, MapPin, ArrowUpRight, Heart, Search, SlidersHorizontal } from 'lucide-react';
 
@@ -30,12 +31,13 @@ export default function DesksPage() {
         <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
           <div className="max-w-2xl">
             <div className="eyebrow mb-3">Desks &amp; Coworking Spaces</div>
-            <h1 className="font-bold text-4xl lg:text-6xl leading-[0.95]" style={{ letterSpacing: '-0.04em' }}>
-              Find your perfect<br />
-              <span className="squiggle">workspace</span>
-            </h1>
+            <TypewriterHeading 
+              text1="Find your perfect" 
+              text2="workspace" 
+              className="font-bold text-4xl lg:text-6xl leading-[0.95] min-h-[2.1em]" 
+            />
             <p className="mt-4 text-[15px] text-[#0B0B0B]/60 leading-relaxed max-w-lg">
-              Hot desks, dedicated seats, and private cabins across 100+ coworking spaces in India's top cities. Book with a single pass.
+              Hot desks, dedicated seats, and private cabins across 100+ coworking spaces in India's top cities. Book your perfect workspace.
             </p>
           </div>
 
@@ -162,7 +164,7 @@ export default function DesksPage() {
         <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
           <div className="grid lg:grid-cols-3 gap-6">
             {[
-              { icon: '🎯', title: 'One Pass, All Spaces', desc: 'A single membership gives you access to our entire network. No separate bookings, no multiple apps.' },
+              { icon: '🎯', title: 'Multiple Spaces', desc: 'Discover and access a wide network of workspaces. No multiple accounts or complex setups.' },
               { icon: '⚡', title: 'Instant Booking', desc: 'Check real-time availability and book in under 60 seconds. Walk in ready to work.' },
               { icon: '💰', title: 'Transparent Pricing', desc: 'No hidden fees. What you see is what you pay. Cancel anytime with no penalties.' },
             ].map((item) => (

@@ -18,7 +18,7 @@ function ScrollToTop() {
 
 function App() {
   useEffect(() => {
-    document.title = "The Desk Finder — One Pass. Every Desk. Done.";
+    document.title = "The Desk Finder — Where work finds space.";
   }, []);
 
   return (

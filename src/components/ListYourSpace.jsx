@@ -55,8 +55,8 @@ export default function ListYourSpace() {
           {/* Right waitlist form */}
           <div className="bg-white/[0.06] border border-white/10 rounded-2xl p-7 lg:p-8">
             <h3 className="font-bold text-[20px] tracking-tight">Join the partner waitlist</h3>
-            <p className="mt-1.5 text-[13px] text-white/50">
-              Be among the first space owners to list on The Desk Finder. Early partners get priority onboarding and zero commission for the first 3 months.
+            <p className="mt-1.5 text-[13px] text-white/55">
+              Be among the first space owners to list on The Desk Finder. Early partners get priority onboarding and dedicated support.
             </p>
 
             <form onSubmit={submit} className="mt-6 space-y-3">
@@ -79,11 +79,10 @@ export default function ListYourSpace() {
               </button>
             </form>
 
-            <div className="mt-5 pt-5 border-t border-white/10 grid grid-cols-3 gap-4 text-center">
+            <div className="mt-5 pt-5 border-t border-white/10 grid grid-cols-2 gap-4 text-center">
               {[
-                { value: '₹0', label: 'Listing cost' },
-                { value: '2–4h', label: 'Onboarding' },
-                { value: '100%', label: 'Your control' },
+                { value: '₹0', label: 'To list your space' },
+                { value: '24h', label: 'Onboarding time' },
               ].map((s) => (
                 <div key={s.label}>
                   <div className="font-bold text-[18px]" style={{ letterSpacing: '-0.03em' }}>{s.value}</div>

@@ -1,18 +1,15 @@
 import React, { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const FAQS = [
   {
     q: 'What is The Desk Finder?',
-    a: 'The Desk Finder is India\'s first coworking pass network. With a single membership, you get access to hot desks, dedicated seats, cabins, and meeting rooms across 100+ partner spaces in 10+ cities no separate bookings, no multiple apps.',
+    a: 'The Desk Finder is India\'s workspace discovery and booking platform. We help you find and book hot desks, dedicated seats, private cabins, and meeting rooms across 100+ partner spaces in 10+ cities.',
   },
   {
-    q: 'How does the pass work?',
-    a: 'Choose a pass (Day, Flex, or Unlimited), pay once, and use it at any partner space. Show your digital pass at the front desk or scan the QR code. It\'s that simple.',
-  },
-  {
-    q: 'Can I use the pass at any space?',
-    a: 'Yes. Your pass works at all partner spaces in our network. The Flex Pass gives you 10 days/month at any space, and the Unlimited Pass gives you unrestricted access everywhere.',
+    q: 'How do I book a workspace?',
+    a: 'Simply choose a workspace that fits your needs, submit an enquiry, and walk in ready to work.',
   },
   {
     q: 'What\'s the difference between a Hot Desk, Dedicated Desk, and Cabin?',
@@ -20,15 +17,11 @@ const FAQS = [
   },
   {
     q: 'Is there a minimum commitment?',
-    a: 'No. Day passes have zero commitment. Monthly plans (Flex and Unlimited) can be cancelled anytime with 30 days notice. No lock-in, no penalties.',
+    a: 'No. You can book day desks with zero commitment. Monthly plans can be scaled or cancelled according to your agreement with the operator.',
   },
   {
     q: 'How do I list my space on The Desk Finder?',
-    a: 'Listing is completely free. Fill out the form on our Contact page or click "List your space" in the navbar. We\'ll review your space and get back to you within 2–4 hours. You only pay a small commission on confirmed bookings.',
-  },
-  {
-    q: 'Are meeting rooms included in the pass?',
-    a: 'Meeting room credits are included in the Flex Pass (2 hrs/month) and Unlimited Pass (5 hrs/month). Additional hours can be booked separately at discounted rates.',
+    a: 'Listing is completely free. Fill out the form on our Contact page or click "List your space" in the navbar. We\'ll review your space and get back to you within 24 hours.',
   },
   {
     q: 'What cities are you available in?',
@@ -53,12 +46,12 @@ export default function FAQ() {
             <p className="mt-3 text-[13px] text-[#0B0B0B]/55 leading-relaxed max-w-xs">
               Can't find what you're looking for? Reach out to us directly.
             </p>
-            <a
-              href="/contact"
+            <Link
+              to="/contact?type=find"
               className="mt-5 inline-flex items-center gap-2 bg-[#0B0B0B] text-white rounded-full px-5 h-10 text-[13px] font-medium hover:bg-[#1f1f1f] transition-colors"
             >
               Contact us
-            </a>
+            </Link>
           </div>
 
           {/* Right accordion */}

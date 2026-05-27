@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Layout from '../components/Layout';
+import TypewriterHeading from '../components/TypewriterHeading';
 import { meetingRooms, virtualSpaces } from '../data/mock';
 import { Star, MapPin, Users, Check, ArrowUpRight, Clock, Wifi } from 'lucide-react';
 
@@ -15,10 +16,11 @@ export default function MeetingRoomsPage() {
         <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
           <div className="max-w-2xl">
             <div className="eyebrow mb-3">Meeting Rooms &amp; Virtual Offices</div>
-            <h1 className="font-bold text-4xl lg:text-6xl leading-[0.95]" style={{ letterSpacing: '-0.04em' }}>
-              Professional spaces<br />
-              <span className="squiggle">on demand</span>
-            </h1>
+            <TypewriterHeading 
+              text1="Professional spaces" 
+              text2="on demand" 
+              className="font-bold text-4xl lg:text-6xl leading-[0.95] min-h-[2.1em]" 
+            />
             <p className="mt-4 text-[15px] text-[#0B0B0B]/60 leading-relaxed max-w-lg">
               Book fully-equipped meeting rooms by the hour, or get a prestigious business address with our virtual office plans.
             </p>

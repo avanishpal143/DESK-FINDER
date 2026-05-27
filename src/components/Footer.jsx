@@ -18,14 +18,14 @@ const LINKS = [
     items: [
       { label: 'About Us', to: '/about' },
       { label: 'Our Story', to: '/about' },
-      { label: 'Contact', to: '/contact' },
-      { label: 'List Your Space', to: '/contact' },
+      { label: 'Contact', to: '/contact?type=find' },
+      { label: 'List Your Space', to: '/contact?type=list' },
     ],
   },
   {
     title: 'Resources',
     items: [
-      { label: 'Blog', to: '/contact' },
+      { label: 'Blog', to: '/contact?type=find' },
       { label: 'City Guides', to: '/desks' },
       { label: 'FAQ', to: '/#faq' },
     ],
@@ -53,7 +53,7 @@ export default function Footer() {
             </Link>
 
             <p className="mt-4 text-[13px] text-[#0B0B0B]/55 leading-relaxed max-w-[220px]">
-              Where work finds space. India's first coworking pass network.
+              Where work finds space.
             </p>
 
             <a href="mailto:hello@thedeskfinder.in" className="mt-4 inline-flex items-center gap-1.5 group">
@@ -103,8 +103,8 @@ export default function Footer() {
             © {new Date().getFullYear()} The Desk Finder. All rights reserved.
           </p>
           <div className="flex items-center gap-4 text-[11px] text-[#0B0B0B]/40">
-            <Link to="/contact" className="hover:text-[#0B0B0B] transition-colors">Privacy</Link>
-            <Link to="/contact" className="hover:text-[#0B0B0B] transition-colors">Terms</Link>
+            <Link to="/contact?type=find" className="hover:text-[#0B0B0B] transition-colors">Privacy</Link>
+            <Link to="/contact?type=find" className="hover:text-[#0B0B0B] transition-colors">Terms</Link>
           </div>
         </div>
 

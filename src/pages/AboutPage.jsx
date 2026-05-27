@@ -1,5 +1,6 @@
 import React from 'react';
 import Layout from '../components/Layout';
+import TypewriterHeading from '../components/TypewriterHeading';
 import { ArrowRight, Check } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -19,10 +20,11 @@ export default function AboutPage() {
         <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
           <div className="max-w-2xl">
             <div className="eyebrow mb-3">About Us</div>
-            <h1 className="font-bold text-4xl lg:text-6xl leading-[0.95]" style={{ letterSpacing: '-0.04em' }}>
-              Where work<br />
-              <span className="squiggle">finds space</span>
-            </h1>
+            <TypewriterHeading 
+              text1="The Desk" 
+              text2="Finder" 
+              className="font-bold text-4xl lg:text-6xl leading-[0.95] min-h-[2.1em]" 
+            />
             <p className="mt-5 text-[15px] text-[#0B0B0B]/60 leading-relaxed max-w-lg">
               The Desk Finder was built on a simple belief that finding a great place to work shouldn't be complicated, expensive, or time-consuming.
             </p>
@@ -47,7 +49,7 @@ export default function AboutPage() {
                   India's coworking market was growing fast, but the experience of finding and booking a workspace was still broken. Hundreds of great spaces existed across every city, but there was no single, reliable way to discover and access them.
                 </p>
                 <p>
-                  So we built The Desk Finder India's first coworking pass network. One membership, hundreds of spaces, zero complexity. Whether you need a hot desk for a day, a dedicated seat for a month, a cabin for your team, or a meeting room for an hour we've got you covered.
+                  So we built The Desk Finder — a simple, transparent way to find and book workspaces. Whether you need a hot desk for a day, a dedicated seat for a month, a cabin for your team, or a meeting room for an hour, we've got you covered.
                 </p>
                 <p>
                   Today, we work with space owners across 10+ cities to bring their inventory online, and help thousands of professionals find their perfect workspace every day.
@@ -61,7 +63,7 @@ export default function AboutPage() {
                 { value: '100+', label: 'Partner Spaces', sub: 'Across India' },
                 { value: '10+', label: 'Cities', sub: 'And growing' },
                 { value: '₹0', label: 'Listing Cost', sub: 'Free for space owners' },
-                { value: '2–4h', label: 'Response Time', sub: 'Average reply time' },
+                { value: '24h', label: 'Response Time', sub: 'Average reply time' },
               ].map((s) => (
                 <div key={s.label} className="bg-white rounded-xl p-5 border border-[var(--line)]">
                   <div className="font-bold text-3xl tracking-tight" style={{ letterSpacing: '-0.04em' }}>{s.value}</div>
@@ -121,7 +123,7 @@ export default function AboutPage() {
                 Have empty desks?<br />Let's fill them.
               </h2>
               <p className="mt-4 text-[14px] text-[#0B0B0B]/60 leading-relaxed max-w-md">
-                Listing your space on The Desk Finder is completely free. We only charge a small commission on confirmed bookings. No upfront cost, no monthly fees just more bookings.
+                Listing your space on The Desk Finder is completely free. No upfront cost, no monthly fees — just more visibility and direct inquiries for your space.
               </p>
               <ul className="mt-5 space-y-2.5">
                 {[
@@ -137,7 +139,7 @@ export default function AboutPage() {
                 ))}
               </ul>
               <Link
-                to="/contact"
+                to="/contact?type=list"
                 className="mt-6 inline-flex items-center gap-2 bg-[#0B0B0B] text-white rounded-full px-6 h-11 text-[14px] font-medium hover:bg-[#1f1f1f] transition-colors group"
               >
                 List your space
@@ -149,8 +151,6 @@ export default function AboutPage() {
                 {[
                   { value: '₹0', label: 'To list your space' },
                   { value: '24h', label: 'Onboarding time' },
-                  { value: '100%', label: 'Control over pricing' },
-                  { value: '0%', label: 'Commission for 3 months*' },
                 ].map((s) => (
                   <div key={s.label} className="text-center p-4 bg-[#F7F5EF] rounded-xl">
                     <div className="font-bold text-2xl tracking-tight">{s.value}</div>
@@ -158,7 +158,6 @@ export default function AboutPage() {
                   </div>
                 ))}
               </div>
-              <p className="mt-4 text-[11px] text-[#0B0B0B]/40">*For early partner spaces. Standard commission applies after 3 months.</p>
             </div>
           </div>
         </div>
@@ -169,10 +168,10 @@ export default function AboutPage() {
         <div className="max-w-[1400px] mx-auto px-6 lg:px-10 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
           <div>
             <h2 className="font-bold text-2xl lg:text-3xl" style={{ letterSpacing: '-0.04em' }}>Ready to find your space?</h2>
-            <p className="mt-1.5 text-[13px] text-white/50">Tell us what you need and we'll match you within 2–4 hours.</p>
+            <p className="mt-1.5 text-[13px] text-white/55">Tell us what you need and we'll match you within 24 hours.</p>
           </div>
           <Link
-            to="/contact"
+            to="/contact?type=find"
             className="shrink-0 inline-flex items-center gap-2 bg-white text-[#0B0B0B] rounded-full px-6 h-11 text-[13px] font-medium hover:bg-[#EDEAE0] transition-colors"
           >
             Get in touch <ArrowRight className="w-4 h-4" />

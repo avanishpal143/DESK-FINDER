@@ -1,177 +1,236 @@
 import React, { useState } from 'react';
 import Layout from '../components/Layout';
-import { managedOffices } from '../data/mock';
-import { ChevronDown, ArrowUpRight, MapPin } from 'lucide-react';
-
-const FEATURES = [
-  { icon: '🏢', title: 'Fully Furnished', desc: 'Move-in ready offices with ergonomic furniture, high-speed internet, and all utilities included.' },
-  { icon: '📞', title: 'Dedicated Support', desc: 'On-site community managers and 24/7 support to handle everything so you can focus on work.' },
-  { icon: '📈', title: 'Scale Flexibly', desc: 'Start with 5 seats, grow to 500. Adjust your space as your team grows—no long-term lock-in.' },
-  { icon: '🔒', title: 'Enterprise Security', desc: 'Biometric access, CCTV, and private networks. Your data and team stay secure.' },
-  { icon: '☕', title: 'Premium Amenities', desc: 'Cafeteria, meeting rooms, event spaces, and wellness areas—all included in your plan.' },
-  { icon: '📍', title: 'Prime Locations', desc: 'Offices in CBD, tech parks, and business hubs across 10+ cities in India.' },
-];
+import TypewriterHeading from '../components/TypewriterHeading';
+import { ArrowRight, Check } from 'lucide-react';
+import { toast } from 'sonner';
 
 export default function ManagedOfficesPage() {
-  const [open, setOpen] = useState(1);
+  const [form, setForm] = useState({ name: '', email: '', phone: '', company: '', teamSize: '', location: '', requirements: '' });
+  const [submitted, setSubmitted] = useState(false);
+
+  const set = (k) => (e) => setForm(f => ({ ...f, [k]: e.target.value }));
+
+  const submit = (e) => {
+    e.preventDefault();
+    if (!form.name || !form.email || !form.teamSize) {
+      toast.error('Please fill in all required fields');
+      return;
+    }
+    setSubmitted(true);
+    toast.success("Requirement received! We'll get back to you within 4 hours.");
+  };
 
   return (
     <Layout>
-      {/* Hero */}
+      {/* Hero section */}
       <section className="bg-cross pt-32 pb-12">
         <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <div className="eyebrow mb-3">Managed Offices</div>
-              <h1 className="font-bold text-4xl lg:text-6xl leading-[0.95]" style={{ letterSpacing: '-0.04em' }}>
-                Your office,<br />fully managed
-              </h1>
-              <p className="mt-4 text-[15px] text-[#0B0B0B]/60 leading-relaxed max-w-lg">
-                Premium managed offices from India's top providers. Real-time inventory, transparent pricing, and zero setup hassle. From 5 to 500 seats.
-              </p>
-              <div className="mt-7 flex flex-wrap gap-3">
-                <a href="/contact" className="inline-flex items-center gap-2 bg-[#0B0B0B] text-white rounded-full px-6 h-11 text-[14px] font-medium hover:bg-[#1f1f1f] transition-colors">
-                  Get a Quote <ArrowUpRight className="w-4 h-4" />
-                </a>
-                <a href="#inventory" className="inline-flex items-center gap-2 bg-white border border-[var(--line)] rounded-full px-6 h-11 text-[14px] font-medium hover:bg-[#EDEAE0] transition-colors">
-                  View Inventory
-                </a>
+          <div className="max-w-3xl">
+            <div className="eyebrow mb-3">Managed Offices</div>
+            <TypewriterHeading 
+              text1="Managed Office" 
+              className="font-bold text-4xl lg:text-6xl leading-[0.95] mb-6 min-h-[1.1em]" 
+            />
+            <p className="text-[17px] sm:text-[19px] text-[#0B0B0B]/70 leading-relaxed font-medium max-w-2xl">
+              A fully managed, branded office space for teams of 10 to 500+. Real-time inventory across Delhi NCR's top operators.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Main Form content */}
+      <section className="py-12 bg-[#F7F5EF] min-h-[500px]">
+        <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
+          <div className="grid lg:grid-cols-12 gap-10 items-start">
+            
+            {/* Info Cards Column */}
+            <div className="lg:col-span-5 space-y-4">
+              <div className="bg-[#0B0B0B] text-white rounded-2xl p-6 lg:p-8">
+                <h3 className="font-bold text-[19px] tracking-tight mb-3">Brokerage-Free Space Search</h3>
+                <p className="text-[13px] text-white/70 leading-relaxed">
+                  Share your requirement below and we'll come back within 4 hours — no brokerage charged to you.
+                </p>
+                <div className="mt-6 pt-5 border-t border-white/10 space-y-4">
+                  {[
+                    { title: 'Delhi NCR Specialized', text: 'Access exclusive, real-time inventory from premium workspaces across Noida, Gurgaon, and Delhi.' },
+                    { title: 'Turnkey Solutions', desc: 'Fully serviced, plug-and-play offices built & managed by industry leaders.' }
+                  ].map((x, idx) => (
+                    <div key={idx} className="flex gap-3">
+                      <div className="w-6 h-6 rounded-full bg-white/10 text-white flex items-center justify-center shrink-0 mt-0.5">
+                        <Check className="w-3.5 h-3.5" />
+                      </div>
+                      <div>
+                        <h4 className="text-[13px] font-bold text-white">{x.title}</h4>
+                        <p className="text-[11px] text-white/60 mt-0.5">{x.text || x.desc}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="bg-[#EDEAE0] rounded-2xl p-6 border border-[var(--line)]">
+                <h4 className="font-bold text-[15px] tracking-tight">Need immediate assistance?</h4>
+                <p className="mt-1 text-[12px] text-[#0B0B0B]/60 leading-relaxed">
+                  Connect directly with our enterprise partnerships team for quick calls.
+                </p>
+                <div className="mt-4 flex flex-col gap-2">
+                  <a href="mailto:hello@thedeskfinder.in" className="text-[13px] font-semibold text-[#0B0B0B] hover:underline">
+                    hello@thedeskfinder.in
+                  </a>
+                  <a href="tel:+919810000000" className="text-[13px] font-semibold text-[#0B0B0B] hover:underline">
+                    +91 98100 00000
+                  </a>
+                </div>
               </div>
             </div>
 
-            {/* Stats */}
-            <div className="grid grid-cols-2 gap-4">
-              {[
-                { value: '4', label: 'Top Providers', sub: 'WeWork, 91SB, Innov8, Awfis' },
-                { value: '45+', label: 'Locations', sub: 'Across 10 cities' },
-                { value: '19,600', label: 'Total Seats', sub: 'Available now' },
-                { value: '85%', label: 'Avg Occupancy', sub: 'High demand' },
-              ].map((s) => (
-                <div key={s.label} className="bg-white rounded-xl p-5 border border-[var(--line)]">
-                  <div className="font-bold text-3xl tracking-tight" style={{ letterSpacing: '-0.04em' }}>{s.value}</div>
-                  <div className="font-medium text-[14px] mt-1">{s.label}</div>
-                  <div className="text-[11px] text-[#0B0B0B]/45 mt-0.5">{s.sub}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Providers accordion */}
-      <section id="inventory" className="py-14 bg-[#F7F5EF]">
-        <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
-          <div className="mb-8">
-            <div className="eyebrow mb-2">Live Inventory</div>
-            <h2 className="font-bold text-3xl lg:text-4xl" style={{ letterSpacing: '-0.04em' }}>Browse by provider</h2>
-            <p className="mt-2 text-[13px] text-[#0B0B0B]/55">Real-time seat availability across all partner spaces.</p>
-          </div>
-
-          <div className="divide-y divide-[var(--line)] border-y border-[var(--line)]">
-            {managedOffices.map((o) => {
-              const isOpen = open === o.id;
-              return (
-                <div key={o.id}>
+            {/* Form Column */}
+            <div className="lg:col-span-7">
+              {submitted ? (
+                <div className="bg-white rounded-2xl p-10 border border-[var(--line)] text-center shadow-sm">
+                  <div className="w-14 h-14 rounded-full bg-[#0B0B0B] grid place-items-center mx-auto">
+                    <Check className="w-7 h-7 text-white" strokeWidth={3} />
+                  </div>
+                  <h2 className="font-bold text-2xl mt-5 tracking-tight">Requirement Received!</h2>
+                  <p className="text-[#0B0B0B]/55 mt-2 text-[14px]">
+                    Thank you <strong>{form.name}</strong>, we have received your request. Our team will contact you at <strong>{form.email}</strong> within 4 hours.
+                  </p>
                   <button
-                    onClick={() => setOpen(isOpen ? null : o.id)}
-                    className="w-full py-5 grid grid-cols-12 items-center gap-4 text-left hover:bg-white/60 transition-colors px-3 -mx-3 rounded-xl"
+                    onClick={() => { setSubmitted(false); setForm({ name: '', email: '', phone: '', company: '', teamSize: '', location: '', requirements: '' }); }}
+                    className="mt-6 text-[13px] underline underline-offset-4 text-[#0B0B0B]/60 hover:text-[#0B0B0B] transition-colors"
                   >
-                    <div className="col-span-12 lg:col-span-5 flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-xl bg-[#0B0B0B] text-white grid place-items-center font-bold text-sm shrink-0">
-                        {o.code}
+                    Submit another requirement
+                  </button>
+                </div>
+              ) : (
+                <form onSubmit={submit} className="bg-white rounded-2xl p-7 lg:p-8 border border-[var(--line)] shadow-sm">
+                  <h2 className="font-bold text-[22px] tracking-tight">Share your requirement</h2>
+                  <p className="mt-1 text-[13px] text-[#0B0B0B]/55 mb-6">Fields marked * are required.</p>
+
+                  <div className="space-y-4">
+                    {/* Name + Email */}
+                    <div className="grid sm:grid-cols-2 gap-4">
+                      <div>
+                        <label className="text-[13px] font-medium block mb-1.5">Full name *</label>
+                        <input
+                          type="text" required value={form.name} onChange={set('name')}
+                          placeholder="Jane Doe"
+                          className="w-full h-11 rounded-xl border border-[var(--line)] px-4 text-[13px] outline-none focus:border-[#0B0B0B]/40 transition-colors placeholder:text-[#0B0B0B]/30 bg-transparent"
+                        />
                       </div>
                       <div>
-                        <h3 className="font-bold text-[17px] tracking-tight">{o.name}</h3>
-                        <p className="text-[12px] text-[#0B0B0B]/50 mt-0.5">
-                          {o.locations} locations · {o.seats.toLocaleString()} total seats
-                        </p>
+                        <label className="text-[13px] font-medium block mb-1.5">Email address *</label>
+                        <input
+                          type="email" required value={form.email} onChange={set('email')}
+                          placeholder="jane@company.com"
+                          className="w-full h-11 rounded-xl border border-[var(--line)] px-4 text-[13px] outline-none focus:border-[#0B0B0B]/40 transition-colors placeholder:text-[#0B0B0B]/30 bg-transparent"
+                        />
                       </div>
                     </div>
-                    <div className="col-span-8 lg:col-span-5">
-                      <div className="flex items-center gap-3">
-                        <div className="flex-1 h-1.5 rounded-full bg-[#EDEAE0] overflow-hidden">
-                          <div className="h-full rounded-full bg-[#0B0B0B] transition-all" style={{ width: `${o.occupancy}%` }} />
-                        </div>
-                        <span className="font-bold text-[14px] w-10 text-right">{o.occupancy}%</span>
-                      </div>
-                      <p className="eyebrow mt-1.5">Occupancy</p>
-                    </div>
-                    <div className="col-span-4 lg:col-span-2 flex justify-end">
-                      <div className={`w-8 h-8 rounded-full border border-[var(--line)] grid place-items-center transition-all ${isOpen ? 'rotate-180 bg-[#0B0B0B] text-white border-[#0B0B0B]' : ''}`}>
-                        <ChevronDown className="w-3.5 h-3.5" />
-                      </div>
-                    </div>
-                  </button>
 
-                  {isOpen && (
-                    <div className="pb-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
-                      {o.inventory.map((inv, i) => (
-                        <div key={i} className="p-4 rounded-xl bg-white border border-[var(--line)] hover:shadow-sm transition-shadow">
-                          <div className="flex items-start justify-between gap-2">
-                            <div className="flex items-center gap-2 min-w-0">
-                              <MapPin className="w-3.5 h-3.5 text-[#0B0B0B]/40 shrink-0" />
-                              <h4 className="font-medium text-[14px] truncate">{inv.name}</h4>
-                            </div>
-                            <span className="shrink-0 px-2 py-0.5 rounded-full bg-[#EDEAE0] text-[10px] uppercase tracking-wider font-medium">{inv.tier}</span>
-                          </div>
-                          <div className="mt-4 flex items-end justify-between">
-                            <div>
-                              <div className="font-bold text-2xl tracking-tight">{inv.seats}</div>
-                              <div className="text-[11px] text-[#0B0B0B]/45">total seats</div>
-                            </div>
-                            <div className="text-right">
-                              <div className={`font-bold text-2xl tracking-tight ${inv.available < 60 ? 'text-[#C9A23B]' : 'text-[#16A34A]'}`}>{inv.available}</div>
-                              <div className="text-[11px] text-[#0B0B0B]/45">available</div>
-                            </div>
-                          </div>
-                          <button className="mt-3 w-full h-8 rounded-lg bg-[#0B0B0B] text-white text-[12px] font-medium hover:bg-[#1f1f1f] transition-colors">
-                            Enquire Now
-                          </button>
-                        </div>
-                      ))}
+                    {/* Phone + Company */}
+                    <div className="grid sm:grid-cols-2 gap-4">
+                      <div>
+                        <label className="text-[13px] font-medium block mb-1.5">Phone number</label>
+                        <input
+                          type="tel" value={form.phone} onChange={set('phone')}
+                          placeholder="+91 98765 43210"
+                          className="w-full h-11 rounded-xl border border-[var(--line)] px-4 text-[13px] outline-none focus:border-[#0B0B0B]/40 transition-colors placeholder:text-[#0B0B0B]/30 bg-transparent"
+                        />
+                      </div>
+                      <div>
+                        <label className="text-[13px] font-medium block mb-1.5">Company name</label>
+                        <input
+                          type="text" value={form.company} onChange={set('company')}
+                          placeholder="Your company"
+                          className="w-full h-11 rounded-xl border border-[var(--line)] px-4 text-[13px] outline-none focus:border-[#0B0B0B]/40 transition-colors placeholder:text-[#0B0B0B]/30 bg-transparent"
+                        />
+                      </div>
                     </div>
-                  )}
-                </div>
-              );
-            })}
+
+                    {/* Team Size + Preferred Location */}
+                    <div className="grid sm:grid-cols-2 gap-4">
+                      <div>
+                        <label className="text-[13px] font-medium block mb-1.5">Team size *</label>
+                        <select
+                          required value={form.teamSize} onChange={set('teamSize')}
+                          className="w-full h-11 rounded-xl border border-[var(--line)] px-3 text-[13px] outline-none focus:border-[#0B0B0B]/40 transition-colors bg-white text-[#0B0B0B]/80"
+                        >
+                          <option value="">Select team size</option>
+                          <option value="10-50">10 to 50 seats</option>
+                          <option value="50-100">50 to 100 seats</option>
+                          <option value="100-200">100 to 200 seats</option>
+                          <option value="200-500">200 to 500 seats</option>
+                          <option value="500+">500+ seats</option>
+                        </select>
+                      </div>
+                      <div>
+                        <label className="text-[13px] font-medium block mb-1.5">Preferred Location (Delhi NCR)</label>
+                        <select
+                          value={form.location} onChange={set('location')}
+                          className="w-full h-11 rounded-xl border border-[var(--line)] px-3 text-[13px] outline-none focus:border-[#0B0B0B]/40 transition-colors bg-white text-[#0B0B0B]/80"
+                        >
+                          <option value="">Select location</option>
+                          <option value="Gurgaon">Gurgaon (Gurugram)</option>
+                          <option value="Noida">Noida / Greater Noida</option>
+                          <option value="Delhi - Connaught Place">Delhi - Connaught Place</option>
+                          <option value="Delhi - Okhla/Saket">Delhi - Okhla/Saket</option>
+                          <option value="Other Delhi NCR">Other Delhi NCR</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    {/* Message details */}
+                    <div>
+                      <label className="text-[13px] font-medium block mb-1.5">Specific Requirements</label>
+                      <textarea
+                        value={form.requirements} onChange={set('requirements')}
+                        placeholder="E.g., Move-in date, IT requirements, cabins needed..."
+                        rows={4}
+                        className="w-full rounded-xl border border-[var(--line)] px-4 py-3 text-[13px] outline-none focus:border-[#0B0B0B]/40 transition-colors placeholder:text-[#0B0B0B]/30 resize-none bg-transparent"
+                      />
+                    </div>
+                  </div>
+
+                  <button
+                    type="submit"
+                    className="mt-6 w-full h-11 rounded-xl bg-[#0B0B0B] text-white hover:bg-[#1f1f1f] transition-colors group inline-flex items-center justify-center gap-2 text-[14px] font-medium"
+                  >
+                    Submit Requirement
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </button>
+                  <p className="mt-3 text-[11px] text-[#0B0B0B]/40 text-center">
+                    We respond within 4 hours. No brokerage charged to you.
+                  </p>
+                </form>
+              )}
+            </div>
+
           </div>
         </div>
       </section>
 
-      {/* Features grid */}
-      <section className="py-14 bg-[#EDEAE0]">
+      {/* Why Choose Us */}
+      <section className="py-14 bg-[#EDEAE0] border-t border-[var(--line)]">
         <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
           <div className="mb-8">
             <div className="eyebrow mb-2">Why Choose Us</div>
             <h2 className="font-bold text-3xl lg:text-4xl" style={{ letterSpacing: '-0.04em' }}>Everything included</h2>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {FEATURES.map((f) => (
-              <div key={f.title} className="bg-white rounded-xl p-5 border border-[var(--line)]">
-                <div className="text-xl mb-3">{f.icon}</div>
-                <h3 className="font-bold text-[15px] tracking-tight">{f.title}</h3>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {[
+              { icon: '🏢', title: 'Fully Furnished', desc: 'Move-in ready offices with ergonomic furniture, high-speed internet, and all utilities included.' },
+              { icon: '📞', title: 'Dedicated Support', desc: '24/7 support to handle everything so you can focus on work.' },
+              { icon: '📈', title: 'Scale Flexibly', desc: 'Start with 5 seats, grow to 500. Adjust your space as your team grows.' },
+              { icon: '☕', title: 'Premium Amenities', desc: 'Cafeteria, meeting rooms, event spaces, and wellness areas—all included in your plan.' },
+              { icon: '📍', title: 'Prime Locations', desc: 'Offices in CBD, tech parks, and business hubs across 10+ cities in India.' }
+            ].map((f) => (
+              <div key={f.title} className="bg-white rounded-xl p-5 border border-[var(--line)] shadow-sm hover:shadow-md transition-shadow">
+                <div className="text-2xl mb-3">{f.icon}</div>
+                <h3 className="font-bold text-[15px] tracking-tight text-[#0B0B0B]">{f.title}</h3>
                 <p className="mt-1.5 text-[13px] text-[#0B0B0B]/60 leading-relaxed">{f.desc}</p>
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA banner */}
-      <section className="py-14 bg-[#0B0B0B] text-white">
-        <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
-          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
-            <div>
-              <h2 className="font-bold text-3xl lg:text-4xl" style={{ letterSpacing: '-0.04em' }}>
-                Need a custom office solution?
-              </h2>
-              <p className="mt-2 text-[14px] text-white/55">
-                Tell us your team size, city, and budget. We'll find the perfect match within 24 hours.
-              </p>
-            </div>
-            <a href="/contact" className="shrink-0 inline-flex items-center gap-2 bg-white text-[#0B0B0B] rounded-full px-7 h-12 text-[14px] font-medium hover:bg-[#EDEAE0] transition-colors">
-              Talk to an Expert <ArrowUpRight className="w-4 h-4" />
-            </a>
           </div>
         </div>
       </section>
